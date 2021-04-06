@@ -6,7 +6,7 @@
             [frontend.config :as config]
             [frontend.util :as util]
             [frontend.storage :as storage]
-            ["/frontend/idbkv" :as idb-keyval :refer [Store]]))
+            ["/frontend/base" :as base-keyval :refer [Store]]))
 
 
 ;; offline db
@@ -18,7 +18,7 @@
 
 (defn clear-idb!
   []
-  (p/let [_ (idb-keyval/clear store)
+  (p/let [_ (base-keyval/clear store)
           dbs (js/window.indexedDB.databases)]
     (doseq [db dbs]
       (js/window.indexedDB.deleteDatabase (gobj/get db "name")))))
@@ -31,26 +31,26 @@
 (defn remove-item!
   [key]
   (when key
-    (idb-keyval/del key store)))
+    (base-keyval/del key store)))
 
 (defn set-item!
   [key value]
   (when key
-    (idb-keyval/set key value store)))
+    (base-keyval/set key value store)))
 
 (defn set-batch!
   [items]
   (when (seq items)
-    (idb-keyval/setBatch (clj->js items) store)))
+    (base-keyval/setBatch (clj->js items) store)))
 
 (defn get-item
   [key]
   (when key
-    (idb-keyval/get key store)))
+    (base-keyval/get key store)))
 
 (defn get-keys
   []
-  (idb-keyval/keys store))
+  (base-keyval/keys store))
 
 (defn get-nfs-dbs
   []

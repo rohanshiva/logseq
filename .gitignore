@@ -12,7 +12,7 @@ pom.xml.asc
 .hg/
 
 node_modules/
-static/
+
 
 .cpcache/
 /src/gen
