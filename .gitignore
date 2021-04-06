@@ -31,3 +31,5 @@ strings.csv
 resources/electron.js
 .clj-kondo/
 .lsp/
+static/.deta/state
+static/.deta/prog_info
