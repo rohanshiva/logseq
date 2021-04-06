@@ -1,4 +1,4 @@
-;(() => {
+(() => {
     function getCookie(name) {
       var b = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')
   
